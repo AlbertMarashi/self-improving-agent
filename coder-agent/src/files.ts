@@ -1,4 +1,3 @@
-import { test } from "bun:test"
 import { readFile, readdir, stat } from "fs/promises"
 import { resolve, join } from "path"
 
@@ -8,7 +7,7 @@ export async function get_files_in_dir(root: string, dir: string): Promise<strin
     const files = await readdir(resolved)
 
     // Use Promise.all to handle all promises concurrently
-    const filePaths = await Promise.all(files.map(async (file) => {
+    const filePaths = await Promise.all(files.map(async file => {
         const fullPath = join(resolved, file)
         const stats = await stat(fullPath)
 

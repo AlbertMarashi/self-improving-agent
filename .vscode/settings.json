@@ -1,0 +1,11 @@
+{
+    "eslint.validate": [
+        "javascript",
+        "typescript",
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+}
