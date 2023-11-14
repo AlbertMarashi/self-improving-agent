@@ -1,8 +1,9 @@
 import { env } from "bun"
 import OpenAI from "openai"
-import { ChatCompletionCreateParamsNonStreaming, ChatCompletionMessage, ChatCompletionMessageParam } from "openai/resources/index.mjs"
+import type { ChatCompletionCreateParamsNonStreaming, ChatCompletionMessage, ChatCompletionMessageParam } from "openai/resources/index.mjs"
+import { edit_code_function } from "./tools/edit_code"
 
-const openai = new OpenAI({
+export const openai = new OpenAI({
     apiKey: env.OPENAI_API_KEY
 })
 
@@ -18,4 +19,3 @@ export async function chat_response(
 
     return response.choices[0].message
 }
-
