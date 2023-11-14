@@ -1,15 +1,15 @@
 module.exports = {
     root: true,
     extends: [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
+        `eslint:recommended`,
+        `plugin:@typescript-eslint/recommended`,
     ],
-    parser: "@typescript-eslint/parser",
-    plugins: ["@typescript-eslint"],
+    parser: `@typescript-eslint/parser`,
+    plugins: [`@typescript-eslint`],
     parserOptions: {
-        sourceType: "module",
+        sourceType: `module`,
         ecmaVersion: 2020,
-        extraFileExtensions: [".svelte"]
+        extraFileExtensions: [`.svelte`]
     },
     env: {
         browser: true,
@@ -18,23 +18,23 @@ module.exports = {
     },
     overrides: [
         {
-            files: ["*.svelte"],
-            parser: "svelte-eslint-parser",
+            files: [`*.svelte`],
+            parser: `svelte-eslint-parser`,
             parserOptions: {
-                parser: "@typescript-eslint/parser",
+                parser: `@typescript-eslint/parser`,
             },
         },
     ],
     rules: {
-        "arrow-parens": ["error", "as-needed", { requireForBlockBody: false }],
-        "no-constant-condition": ["error", { "checkLoops": false }],
+        "arrow-parens": [`error`, `as-needed`, { requireForBlockBody: false }],
+        "no-constant-condition": [`error`, { "checkLoops": false }],
         // disallow semi-colon
-        "semi": ["error", "never"],
-        "quotes": ["error", "double"],
-        "array-element-newline": ["error", "consistent"],
-        "no-self-assign": "off",
-        "indent": ["error", 4, { "SwitchCase": 1 }],
-        "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
-        "@typescript-eslint/consistent-type-imports": ["error", { prefer: "type-imports" }],
+        "semi": [`error`, `never`],
+        "quotes": [`error`, `backtick`],
+        "array-element-newline": [`error`, `consistent`],
+        "no-self-assign": `off`,
+        "indent": [`error`, 4, { "SwitchCase": 1 }],
+        "@typescript-eslint/no-unused-vars": [`warn`, { "argsIgnorePattern": `^_` }],
+        "@typescript-eslint/consistent-type-imports": [`error`, { prefer: `type-imports` }],
     }
 }

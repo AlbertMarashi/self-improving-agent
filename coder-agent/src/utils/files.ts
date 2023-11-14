@@ -32,12 +32,12 @@ export async function get_files_in_dir(root: string, exclude: string[]): Promise
 
 // Function to read a file
 export async function read_file(file: string): Promise<string> {
-    return readFile(file, "utf-8")
+    return readFile(file, `utf-8`)
 }
 
 // Read file with line numbers prefixed
 export async function read_file_with_line_numbers(file: string): Promise<string> {
     const contents = await read_file(file)
-    const lines = contents.split("\n")
-    return lines.map((line, i) => `${i + 1}: ${line}`).join("\n")
+    const lines = contents.split(`\n`)
+    return lines.map((line, i) => `${i + 1}: ${line}`).join(`\n`)
 }

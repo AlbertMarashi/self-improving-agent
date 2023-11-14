@@ -1,26 +1,24 @@
-// import { chat_response } from "./openai"
-// import { get_files_in_dir, read_file_with_line_numbers } from "./utils/files"
-// import { extname, join } from "path"
-// import { chat_response } from "./openai"
+import { chat_response } from "./openai"
+import { get_files_in_dir, read_file_with_line_numbers } from "./utils/files"
+import { extname, join } from "path"
 
-import { BaseAgent } from "./agent"
 
-// const dir = import.meta.dir
-// const files = (await get_files_in_dir(dir, ["node_modules"]))
-// const code = await Promise.all(files.map(async f =>
-//     `\`${f}\`
-// \`\`\`${extname(f).slice(1)}
-// ${await read_file_with_line_numbers(join(dir, f))}
-// \`\`\`
-// `))
+const dir = import.meta.dir
+const files = (await get_files_in_dir(dir, [`node_modules`, `tests`]))
+const code = await Promise.all(files.map(async f =>
+    `\`${f}\`
+\`\`\`${extname(f).slice(1)}
+${await read_file_with_line_numbers(join(dir, f))}
+\`\`\`
+`))
 
-// const PROMPT = `
-// Given the following codebase of an AI designed to self-improve, how would you improve its capabilities?
-// Start by a short paragraph of thoughts, followed by code changes.
-// ${ code.join("\n") }
-// `
+const PROMPT = `
+Given the following codebase of an AI designed to self-improve, how would you improve its capabilities?
+Start by a short paragraph of thoughts, followed by code changes.
+${ code.join(`\n`) }
+`
 
-// console.log(PROMPT)
+console.log(PROMPT)
 
 // const response = await chat_response([{
 //     content: PROMPT,
@@ -29,6 +27,23 @@ import { BaseAgent } from "./agent"
 
 // console.log(response.content)
 
-const agent = new BaseAgent()
+// import { resolve } from "path"
+// import { BaseAgent } from "./agent"
+// const dir = resolve(import.meta.dir, `../tests/tools/edit_lines_of_code`)
 
-console.log(await agent.run())
+// const agent = new BaseAgent(`Pass the test`, dir)
+
+// console.log(await agent.start_run())
+
+
+// agent.on(`run:updated`, async () => {
+//     const messages = await agent.get_messages()
+
+//     const text = messages.map(m => `${m.role}: ${m.content[0].type === `text` ? m.content[0].text.value : null}`).join(`\n`)
+
+//     console.log(text)
+// })
+
+// const { required_action } = await agent.until_status(`requires_action`)
+
+// console.log(required_action!.submit_tool_outputs.tool_calls)
